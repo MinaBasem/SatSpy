@@ -1,7 +1,9 @@
 # SatSpy 1.0
 A simple GUI implementation of the popular Satellite tracking website [N2YO.com](N2YO.com)
 
-_**Note:**_ [N2YO.com](N2YO.com) provides a REST API used in this project that requires an API Key obtained through the website. (However an API key is provided by default with a maximum of 1000 requests/hour)
+_**Note:**_ [N2YO.com](N2YO.com) provides a REST API used in this project that requires an API Key obtained through the website. (However, an API key is provided by default with a maximum of 1000 requests/hour)
+
+![Screen Shot 2023-07-09 at 1 02 33 AM](https://github.com/MinaBasem/SatSpy/assets/42482261/f3227968-1a9b-4e05-bef6-2f28dd60d8ed)
 
 ## Features:
   - Search for satellites by Name or NORAD ID
@@ -91,8 +93,6 @@ A few functions are used to obtain different information and load the map into P
 
 
 Any contributions are appreciated.
-
-
 
 
 
