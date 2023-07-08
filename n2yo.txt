@@ -1,0 +1,653 @@
+
+
+
+
+<!DOCTYPE html>
+<HEAD>
+<TITLE>KKS-1 (KISEKI) Satellite details 2009-002H NORAD 33499</TITLE>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<script src="/js/jquery-1.11.js"></script>
+<script type="text/javascript" src="/js/timezone.js?1688856932"></script>
+<script src="/js/tooltip.js" type="text/javascript"></script>
+<script src="/js/tooltip-items.js" type="text/javascript"></script>
+
+<meta property="og:url" content="https://www.n2yo.com//satellite/?s=33499"/>
+<meta property="og:title" content="Technical details for satellite KKS-1 (KISEKI)"/>
+<meta property="og:image" content="https://www.n2yo.com/img/n2yo-circle-fb.png"/>
+<meta property="og:site_name" content="N2YO.com - Real Time Satellite Tracking and Predictions"/>
+<meta property="og:type" content="website"/>
+<meta property="og:description" content="KKS 1 is a small, educational technology satellite built by the Tokyo Metropolitan College of Industrial Technology. Its purpose is to demonstrate (prove) experiments on micro-thrusters, to conduct basic experiments on 3-axis attitude control and to take land images with a camera...."/>
+
+<META name="keywords" content="KKS-1 (KISEKI), 2009-002H, 33499, satellite tracking, passes, prediction, satellite database">
+<META name="description" content="Technical details about the KKS-1 (KISEKI) (2009-002H or NORAD 33499) satellite. KKS-1 (KISEKI) can be selected for live tracking or to see the passes visible from your location, if applicable">
+
+
+
+</HEAD>
+<body>
+<script type='text/javascript' src="/js/passes.js"></script> 
+<script>
+var startPass = null;
+var endPass = null;
+var timer;
+var issid = 25544;
+var lat = 29.36972;
+var lng = 47.97833;
+go();
+</script>
+
+<!-- 
+<script type='text/javascript'>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  (function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') +
+      '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+  })();
+</script> -->
+
+<!-- Google tag Analytics (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QZGWPSKPV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QZGWPSKPV5');
+</script>
+
+<script type='text/javascript'>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/31043081/n2yo-header', [728, 90], 'div-gpt-ad-1438712706402-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+
+
+<div id="headercontainer" style="overflow: auto; zoom: 1">
+<table style="width:100%;font-size:14px">
+<tr>
+<td>
+	<div id="logo">
+		<a href="/"><img src="/img/n2yologo.png" width="200" height="39" border="0" alt="n2yo.com"/></a>
+		<div class="fb-like" data-href="https://www.facebook.com/n2yodotcom" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="tahoma"></div>
+		<g:plusone></g:plusone>
+
+	</div>
+<span id = "headermessage" style="background-color:#ffffca;border:1px dashed #cacaba;width:300px;">
+
+	Tracking <b><span style="color:#d50000">27679</span></b> objects as of 8-Jul-2023	<br/><a href="/space-station/">
+	HD Live streaming from Space Station</a>
+	<br/>
+	<script src="/js/satellite-js/dist/satellite.min.js"></script> 
+<link rel="stylesheet" href="/css/odometer-theme-car.css" />
+<script src="/js/odometer.js"></script>
+<style>
+.odometer {
+    font-size: 16px;
+}
+</style>
+<span id="up"><div id="odometer" class="odometer"></div> objects crossing your sky now</up>
+<script>
+var items;
+if (!( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )) {
+
+	$.get("/inc/all.php", function(data) {
+		  items = data.split('\n');
+		up();
+	});
+	setInterval('up()', 5000);
+}
+else
+{
+    document.getElementById("up").style.display='none';
+}
+function up()
+{
+	  var cnt = 0;
+	  for(var i=0;i<items.length;i++)
+	  {
+		var line = items[i];
+		if(line[0]=="1")
+		  {
+			var satid = parseInt(line.substr(2,5));
+			var line1 = items[i];
+			var line2 = items[i+1];
+			var satrec = satellite.twoline2satrec(line1, line2);
+			var now = new Date();
+
+				
+			var positionAndVelocity = satellite.propagate(
+				satrec,
+				now.getUTCFullYear(),
+				now.getUTCMonth() + 1, 
+				now.getUTCDate(),
+				now.getUTCHours(),
+				now.getUTCMinutes(),
+				now.getUTCSeconds()
+			);
+
+
+
+			var positionEci = positionAndVelocity.position,
+		    velocityEci = positionAndVelocity.velocity;
+
+			var gmst = satellite.gstimeFromDate(
+		    now.getUTCFullYear(),
+		    now.getUTCMonth() + 1, 
+		    now.getUTCDate(),
+		    now.getUTCHours(),
+		    now.getUTCMinutes(),
+		    now.getUTCSeconds()
+			);
+
+var deg2rad = Math.PI/180;
+var observerGd = {
+    longitude: 47.97833 * deg2rad,
+    latitude: 29.36972 * deg2rad,
+    height: 0
+};
+
+try
+{
+	
+			var positionEcf   = satellite.eciToEcf(positionEci, gmst);
+
+}
+catch (err)
+{
+												//console.log("Error: " + err);
+}
+
+
+
+			var lookAngles    = satellite.ecfToLookAngles(observerGd, positionEcf);
+
+
+		    var dopplerFactor = 0;
+var azimuth   = lookAngles.azimuth,
+    elevation = lookAngles.elevation,
+    rangeSat  = lookAngles.rangeSat;
+
+			azimuth1 =  azimuth*180/Math.PI;
+			elevation1 =  elevation*180/Math.PI;
+
+
+			if(elevation1>10)
+			  {
+				cnt++;
+			  }
+
+		  }
+	  }
+	odometer.innerHTML = cnt;
+
+}
+</script>
+
+
+
+	</span>
+</td>
+<td valign="top" align="center" width="200">
+
+<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+<!-- n2yo-com-234x60 -->
+<!--<ins class="adsbygoogle"
+     style="display:inline-block;width:234px;height:60px"
+     data-ad-client="ca-pub-8839140430005838"
+     data-ad-slot="1743584802"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>-->
+
+<b><span id="countdown" style="display:block"></span></b>
+
+
+
+
+</td>
+<td align="right" valign="top">
+			<form action="/database/#results" method="GET">
+			<div id="searchbox" align="right">
+			 
+	<br/>
+		<INPUT TYPE="text" NAME="q" ID="srcsat" style="font-size: 14px; background-color: #FFFFFF;width:140px" size="12" value="Find a satellite..." onFocus='document.getElementById("srcsat").value="";'>
+		<INPUT TYPE="submit" value="Search" style="font-size: 12px; background-color:#D8D8D8; color:#000000; margin-right: 6px;">
+		<div align="right">
+		<a href="https://www.facebook.com/n2yodotcom">N2YO.com on Facebook</a>
+		&nbsp;&nbsp;
+		<A HREF="/database/">Advanced</A>&nbsp;&nbsp;&nbsp;</div>
+		</form>
+	</div>
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+</tr>
+</td>
+</table>
+</div>
+<div id="admobiheader">
+
+<!--
+<script id="mNCC" language="javascript">
+    medianet_width = "468";
+    medianet_height = "60";
+    medianet_crid = "344318977";
+    medianet_versionId = "111299"; 
+    (function() {
+        var isSSL = 'https:' == document.location.protocol;
+        var mnSrc = (isSSL ? 'https:' : 'http:') + '//contextual.media.net/nmedianet.js?cid=8CUY6IMG3' + (isSSL ? '&https=1' : '');
+        document.write('<scr' + 'ipt type="text/javascript" id="mNSC" src="' + mnSrc + '"></scr' + 'ipt>');
+    })();
+  </script>
+-->
+
+
+</div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=372896566168367";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8839140430005838",
+          enable_page_level_ads: true
+     });
+</script>
+-->
+
+
+<!-- <div style="height:24px;background-color:#ff0000;color:#fff;">
+<center><strong><a href="https://www.n2yo.com/?s=49220" style="color:#fff;visited:#fff;active:#fff;hover:#eee">Track INSPIRATION-4</a></strong></center> -->
+</div>
+<div id="menu">
+	 <link href="/ddmenu/ddmenu.css" rel="stylesheet" type="text/css" />
+    <script src="/ddmenu/ddmenu.js" type="text/javascript"></script>
+<!--INFOLINKS_OFF-->
+  <nav id="ddmenu">
+      <div class="menu-icon"></div>
+    <ul>
+		<li class="no-sub"><a class="top-heading" href="https://www.n2yo.com/">Home</a></li>
+		<li>
+        <span class="top-heading"><a class="top-heading" href="/satellites/?c=most-popular">Most tracked</a></span>
+		<i class="caret"></i> 
+            <div class="dropdown">
+			<div class="dd-inner">
+                <div class="column">
+				<A HREF="/satellite/?s=25544">SPACE STATION</A>
+<A HREF="/satellite/?s=36516">SES 1</A>
+<A HREF="/satellite/?s=33591">NOAA 19</A>
+<A HREF="/satellite/?s=29155">GOES 13</A>
+<A HREF="/satellite/?s=25338">NOAA 15</A>
+<A HREF="/satellite/?s=28654">NOAA 18</A>
+<A HREF="/satellite/?s=25994">TERRA</A>
+<A HREF="/satellite/?s=27424">AQUA</A>
+<A HREF="/satellite/?s=38771">METOP-B</A>
+<A HREF="/satellite/?s=37849">SUOMI NPP</A>
+<A HREF="/satellite/?s=36411">GOES 15</A>
+<A HREF="/satellite/?s=40967">FOX-1A (AO-85)</A>
+<A HREF="/satellite/?s=27607">SAUDISAT 1C</A>
+<A HREF="/satellite/?s=41332">KMS-4</A>
+<A HREF="/satellite/?s=37820">TIANGONG 1</A>
+<A HREF="/satellite/?s=40069">METEOR M2</A>
+<A HREF="/satellite/?s=25657">ASIASAT 3S</A>
+<A HREF="/satellite/?s=36032">NSS 12</A>
+<A HREF="/satellite/?s=31135">AGILE</A>
+<A HREF="/satellite/?s=40147">MEASAT 3B</A>
+				<a href="/satellites/?c=most-popular">MORE...</a>
+                </div>
+				</div>
+            </div>
+        </li>
+		<li>
+		<span class="top-heading"><a class="top-heading" href="/satellites/?c=latest-launches">Just launched</a></span>
+		<i class="caret"></i> 
+            <div class="dropdown">
+			<div class="dd-inner">
+                <div class="column">
+				<A HREF="/satellite/?s=57209">EUCLID</A>
+<A HREF="/satellite/?s=57166">METEOR M2-3</A>
+<A HREF="/satellite/?s=57156">STARLINK-6137</A>
+<A HREF="/satellite/?s=57155">STARLINK-6108</A>
+<A HREF="/satellite/?s=57154">STARLINK-6106</A>
+<A HREF="/satellite/?s=57153">STARLINK-5879</A>
+<A HREF="/satellite/?s=57152">STARLINK-6164</A>
+<A HREF="/satellite/?s=57151">STARLINK-5776</A>
+<A HREF="/satellite/?s=57150">STARLINK-5780</A>
+<A HREF="/satellite/?s=57149">STARLINK-5778</A>
+<A HREF="/satellite/?s=57148">STARLINK-5788</A>
+<A HREF="/satellite/?s=57147">STARLINK-5765</A>
+<A HREF="/satellite/?s=57146">STARLINK-5791</A>
+<A HREF="/satellite/?s=57145">STARLINK-5768</A>
+<A HREF="/satellite/?s=57144">STARLINK-5150</A>
+<A HREF="/satellite/?s=57143">STARLINK-5358</A>
+<A HREF="/satellite/?s=57142">STARLINK-5361</A>
+<A HREF="/satellite/?s=57141">STARLINK-5357</A>
+<A HREF="/satellite/?s=57140">STARLINK-5354</A>
+<A HREF="/satellite/?s=57139">STARLINK-5355</A>
+				<a href="/satellites/?c=latest-launches">MORE...</a>
+                </div>
+				</div>
+            </div>
+        </li>
+		<li>
+		<span class="top-heading">Satellites on orbit</span>
+		<i class="caret"></i> 
+            <div class="dropdown">
+			<div class="dd-inner">
+                <div class="column">
+					<h4><a href="/satellites/">CATEGORIES</a></h4>
+                    <a href="/satellites/?c=2">Int'l Space Station</a>
+					<a href="/satellites/?c=54">Chinese Space Station</a>
+                    <a href="/satellites/?c=1">Brightest</a>
+					<a href="/satellites/?c=52">Starlink</a>
+                    <a href="/satellites/?c=20">GPS Operational</a>
+					<a href="/satellites/?c=21">Glonass Operational</a>
+					<a href="/satellites/?c=22">Galileo</a>
+					<a href="/satellites/?c=35">Beidou</a>
+					<a href="/satellites/?c=30">Military</a>
+					<a href="/satellites/?c=15">Iridium</a>
+					<a href="/satellites/?c=17">Globalstar</a>
+					<a href="/satellites/?c=10">Geostationary</a>
+					<a href="/satellites/?c=26">Space & Earth Science</a>
+					<a href="/satellites/?c=3">Weather</a>
+					<a href="/satellites/?c=18">Amateur radio</a>
+					<a href="/satellites/">MORE CATEGORIES...</a>
+				</div>
+                <div class="column">
+					<h4><a href="/whats-up/whats-up-now.php">WHAT'S UP?</a></h4>
+                    <a href="/passes/amateur-radio.php">Amateur radio sat passes</a>
+                    <a href="/whats-up/?c=20">GPS satellites</a>
+                    <a href="/whats-up/?c=21">Glonass satellites</a>
+                    <a href="/whats-up/?c=35">Beidou satellites</a>
+                    <a href="/whats-up/?c=22">Galileo satellites</a>                    
+					<a href="/whats-up/?c=15">Iridium satellites</a>
+                    <a href="/whats-up/?c=17">Globalstar satellites</a>
+                    <!--<a href="/whats-up/whats-up-now.php" style="color:red">What's up in your sky now?</a>-->
+					<br/>
+					<h4><a href="/database/">FIND A SATELLITE</a></h4>
+					<a href="/database/"> SEARCH DATABASE</a>
+					<a href="/browse/"> BROWSE BY LAUNCH DATE</a>
+					<a href="/satellites/"> BROWSE BY CATEGORY</a>
+					<a href="/satellites/?c=&t=country"> BROWSE BY COUNTRY</a>
+				</div>
+                <div class="column">
+					<h4><a href="/satellites?c=&t=country">OWNERS/COUNTRIES</a></h4>
+					<a href="/satellites?c=US&t=country"><img src='/img/org/us.gif' border='0' width='20' height='15' style="vertical-align: text-bottom"> UNITED STATES</a>
+					<a href="/satellites?c=CIS&t=country"><img src='/img/org/cis.gif' border='0' width='20' height='15' style="vertical-align: text-bottom"> CIS (FORMER USSR)</a>
+					<a href="/satellites?c=PRC&t=country"><img src='/img/org/prc.gif' border='0' width='20' height='15' style="vertical-align: text-bottom"> PEOPLE'S REPUBLIC OF CHINA</a>
+					<a href="/satellites?c=JPN&t=country"><img src='/img/org/jpn.gif' border='0' width='20' height='15' style="vertical-align: text-bottom"> JAPAN</a>
+					<a href="/satellites?c=ESA&t=country"><img src='/img/org/esa.gif' border='0' width='20' height='15' style="vertical-align: text-bottom"> EUROPEAN SPACE AGENCY</a>
+					<a href="/satellites?c=FR&t=country"><img src='/img/org/fr.gif' border='0' width='20' height='15' style="vertical-align: text-bottom"> FRANCE</a>
+					<a href="/satellites?c=IND&t=country"><img src='/img/org/ind.gif' border='0' width='20' height='15' style="vertical-align: text-bottom"> INDIA</a>
+					<a href="/satellites?c=UK&t=country"><img src='/img/org/uk.gif' border='0' width='20' height='15' style="vertical-align: text-bottom"> UNITED KINGDOM</a>
+					<a href="/satellites?c=CA&t=country"><img src='/img/org/ca.gif' border='0' width='20' height='15' style="vertical-align: text-bottom"> CANADA</a>
+					<a href="/satellites?c=GER&t=country"><img src='/img/org/ger.gif' border='0' width='20' height='15' style="vertical-align: text-bottom"> GERMANY</a>
+					<a href="/satellites?c=&t=country"> MORE OWNERS/COUNTRIES...</a>
+				</div>
+				</div>
+            </div>
+        </li>
+		<li>
+		<a class="top-heading" href="/info/?a=22">Alerting tools</a>
+		<i class="caret"></i> 
+            <div class="dropdown right-aligned">
+			<div class="dd-inner">
+                <div class="column">
+				<h4>ALERTING TOOLS</h4>
+                    <a href="/info/?a=43"><img src="/ddmenu/phone.png" border="0" width="16" style="vertical-align: text-bottom"> SPACE STATION PREDICTIONS BY VOICE</a>
+                    <a href="/login/iss-notifications/"><img src="/ddmenu/alert.png" border="0" width="16" style="vertical-align: text-bottom"> SPACE STATION NOTIFICATION TOOL </a>
+                    <a href="/info/?a=15"><img src="/ddmenu/email.png" border="0" width="16" style="vertical-align: text-bottom"> ALERTS BY EMAIL AND SMS</a>
+				</div>
+				</div>
+        </li>
+		<li>
+		<span class="top-heading">More stuff</span>
+		<i class="caret"></i> 
+            <div class="dropdown right-aligned">
+			<div class="dd-inner">
+                <div class="column">
+				<h4>ADDITIONAL INFO</h4>
+                    <a href="/space-station" style="color:red"><b>HD LIVE STREAMING FROM ISS</b></a>
+                    <a href="/news/read.php?p=0">SATELLITE NEWS</a>
+                    <a href="/about/?a=donation">MAKE A DONATION</a>
+                    <a href="https://www.facebook.com/n2yodotcom">N2YO.COM ON FACEBOOK</a>
+                    <a href="/about/?a=links">EXTERNAL LINKS</a>
+                    <a href="/about/?a=faq">FAQ</a>
+                    <a href="/about/?a=feedback">CONTACT/FEEDBACK</a>
+                    <a href="/about/?a=privacy">PRIVACY POLICY</a>
+                    <a href="/about/?a=terms">TERMS OF USE</a>
+				</div>
+                <div class="column">
+					<h4>USER PREFERENCES</h4>
+										<a href=https://www.n2yo.com/login/edit/>SIGN IN</a>					<a href="https://www.n2yo.com/login/edit/">EDIT/CHANGE YOUR LOCATION</a>
+					<br/>
+					<h4>SITE OWNERS</h4>
+                    <a href="/widgets/">WIDGETS FOR YOUR PAGE</a>
+                    <a href="/api/">API ACCESS</a>
+					<br/>
+					<h4>MOBILE APPS</h4>
+                    <a href="http://southernstars.com/products/"  style="color:red"><strong>Orbitrack</strong> - <b>NEW</b> (iOS and Android)</a>
+					
+				</div>
+				</div>
+			</div>
+        </li>
+	<li class="no-sub"><a class="top-heading" href=https://www.n2yo.com/login/edit/>Sign in</a></li>
+    </ul>
+
+
+</nav>
+<!--INFOLINKS_ON-->
+</div>
+<table id="tabsatellite" width="100%">
+<tr>
+<td class="hidecell" style="width:160px">
+
+  <script id="mNCC" language="javascript">
+    medianet_width = "160";
+    medianet_height = "600";
+    medianet_crid = "515138167";
+    medianet_versionId = "111299"; 
+    (function() {
+        var isSSL = 'https:' == document.location.protocol;
+        var mnSrc = (isSSL ? 'https:' : 'http:') + '//contextual.media.net/nmedianet.js?cid=8CUY6IMG3' + (isSSL ? '&https=1' : '');
+        document.write('<scr' + 'ipt type="text/javascript" id="mNSC" src="' + mnSrc + '"></scr' + 'ipt>');
+    })();
+  </script>
+
+</td>
+<td>
+		<div id="satinfo">
+		<H1>KKS-1 (KISEKI)</H1>
+		<p class="spaced">
+				<A HREF="/?s=33499&live=1">Track KKS-1 (KISEKI) now!</A>
+						<br/><A HREF="/passes/?s=33499&a=1">10-day predictions</A> <a class="showTip tenday" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+		
+		
+			
+				<br>KKS-1 (KISEKI) is classified as: <ul>
+ <li class='arrow'><A HREF="/satellites/?c=18">Amateur radio</A>
+</ul>
+		
+		</p>
+		<br/>
+		<B>NORAD ID</B>: 33499 <a class="showTip noradid" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+		<br/><B>Int'l Code</B>: 2009-002H <a class="showTip intlcode" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+					<br/><B>Perigee</B>: 639.0 km <a class="showTip perigee" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+			<br/><B>Apogee</B>: 652.0 km <a class="showTip apogee" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+			<br/><B>Inclination</B>: 98.2 &deg <a class="showTip inclination" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+			<br/><B>Period</B>: 97.5 minutes <a class="showTip period" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+			<br/><B>Semi major axis</B>: 7016 km <a class="showTip semimajoraxis" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+			<br/><B>RCS</B>: 0.0829 m<sup>2</sup> (small) <a class="showTip rcs" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+
+
+		
+						<br/><B>Launch date</B>: <a href="/browse/?y=2009&m=1">January 23, 2009</a>
+			<br/><B>Source</B>: Japan (JPN)
+			<br/><B>Launch site</B>: TANEGASHIMA SPACE CENTER (TNSTA)
+
+									
+
+							<br/><br/>
+	<div style="border: 1px dashed gray; background-color:#ebebeb; padding:4px">
+				<B>Uplink</B> (MHz): 				<br/><B>Downlink</B> (MHz): 437.445				<br/><B>Beacon</B> (MHz): 437.385								<br/><B>Mode</B>: 1200bps AFSK CW				<br/><B>Call sign</B>: JQ1YYY				<br/><B>Status</B>: <span style='color:#007100'><b>Active</b></span>	</div>
+									
+
+
+
+
+									<br/><br/>KKS 1 is a small, educational technology satellite built by the Tokyo Metropolitan College of Industrial Technology. Its purpose is to demonstrate (prove) experiments on micro-thrusters, to conduct basic experiments on 3-axis attitude control and to take land images with a camera.			
+						
+		</div>
+<div id="adsatellitepage">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Responsive bottom -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8839140430005838"
+     data-ad-slot="6966096404"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+		<div id="satgraphics">
+
+		<table id="tabtracking">
+		<tr>
+		<td class="tabheader">
+		Your satellite tracking list
+		</td>
+		</tr>
+		<tr>
+		<td>
+		<center>
+		<form method="POST" name="addsat">
+<input type="hidden" name="satid" value="33499">
+<input type="hidden" name="satname" value="KKS-1 (KISEKI)">
+<!--<a href='javascript:document.addsat.submit()'>Add KKS-1 (KISEKI) on your tracking list</a>-->
+<input type="button" class="sButton" value="Add KKS-1 (KISEKI) on your tracking list" onclick='javascript:document.addsat.submit()'/>
+</form>
+
+<form method="POST" name="multisat">
+Your tracking list is empty
+  <input type="hidden" name="remove"/>
+</form>
+<script>
+function doit(n)
+{
+ document.multisat.remove.value=n;
+ document.multisat.submit();
+}
+</script>		</center>
+		</td>
+		</tr>
+		</table>
+<br/>
+<div id="medianetsatellite">
+<!--<center>
+<a href="//thegreatcoursesplus.7eer.net/c/379891/310092/3896"><img src="//a.impactradius-go.com/display-ad/3896-310092" border="0" alt="" width="300" height="250"/></a><img height="0" width="0" src="//thegreatcoursesplus.7eer.net/i/379891/310092/3896" style="position:absolute;visibility:hidden;" border="0" />
+</center>-->
+</div>
+
+<center>
+
+		<script>
+			var norad_n2yo = '33499';
+			var size_n2yo = 'small';
+			var allpasses_n2yo = '1';
+			var map_n2yo = '2';
+		</script>
+		<script type="text/javascript" src="https://www.n2yo.com/js/widget-tracker.js"></script>
+</center>
+<br/>
+<center><script type="text/javascript">
+    google_ad_client = "ca-pub-8839140430005838";
+    google_ad_slot = "4683736009";
+    google_ad_width = 320;
+    google_ad_height = 100;
+</script>
+<!-- 320x100 live streaming -->
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></center>
+
+
+
+		</div>
+<br/>
+
+<br/><A HREF="https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2009-002H" target="_blank">NASA's NSSDC Master Catalog</A> 
+<a class="showTip nssdc" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+		<br/>
+		<br/>
+		<B>Two Line Element Set (TLE):</B> <a class="showTip tle" href="#"><img src="../img/info.png" width="12" height="12" border="0" alt=""></a>
+		<div id="tle">
+<pre>
+1 33499U 09002H   23188.64998755  .00001308  00000-0  19242-3 0  9997
+2 33499  98.1709  81.2286 0009236 153.4128 206.7557 14.77137768777515
+</pre>
+		Source of the keplerian elements: Caltech		<br/><br/>
+
+		</div>
+</td>
+</tr>
+</table>
+
+<!-- footer -->
+<div id="footer">
+<table id="footer">
+<!-- Other links-->
+<tr>
+<td align="center">
+<A HREF="/about/?a=links">Links</A>&nbsp;&nbsp;<A HREF="/about/?a=terms">Terms of Use</A>&nbsp;&nbsp;<A HREF="/about/?a=privacy">Privacy Policy</A>&nbsp;&nbsp;<A HREF="/about/?a=feedback">Contact Us</A> 
+<br/>Copyright &copy; N2YO.com. All rights reserved
+<!--<br/><a href="http://www.itprostar.com">Developed by ITPROSTAR</a>-->
+<br/><br/><!-- AddThis Button BEGIN -->
+<a class="addthis_button" href="https://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bfedf760e3dd1ee"><img src="https://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bfedf760e3dd1ee"></script>
+
+<!-- AddThis Button END -->
+</td>
+</tr>
+</table>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-330684-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!--<script type="text/javascript">
+    var infolink_pid = 1099291;
+    var infolink_wsid = 0;
+</script>
+<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>-->
+
+</div>
+<!--
+-->
+
+</body>
+</html>
